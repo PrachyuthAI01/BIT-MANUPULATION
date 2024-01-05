@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int a[n];
+    vector<int>v;
+    int l,r;
+    
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        v.push_back(a[i]);
+    }
+    int s=*max_element(v.begin(),v.end());
+    int x=log2(s);
+    vector<vector<int>>d(n,vector<int>(x+1,0));
+    for(int i=0;i<n;i++){
+        for(int j=0;j<=x;j++){
+            if((v[i]>>j)&1==1)d[i][j]=1;
+            cout<<d[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"---------------------------------------------------------------";
+    cout<<endl;
+    for(int j=0;j<=x;j++){
+        int f=0;
+        for(int i=0;i<n;i++){
+            f=f+d[i][j];
+            d[i][j]=f;
+            
+        }
+        cout<<endl;
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<=x;j++){
+            cout<<d[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+}
