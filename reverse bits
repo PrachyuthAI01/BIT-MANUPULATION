@@ -1,0 +1,7 @@
+import math
+n=int(input())
+d=0
+for i in range(32):
+    if (n>>i)&1==1:
+        d+=math.pow(2,31-i)
+print(int(d))
